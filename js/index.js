@@ -77,14 +77,12 @@ function renderWhiteSauce() {
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
   let crust = document.querySelector('.crust')
-  crust.style.visibility = 'visible'
-  document.querySelectorAll('.crust').forEach((oneCrust) => {
+
     if (state.glutenFreeCrust) {
-      oneCrust.style.visibility = 'visible';
+      crust.classList.add('crust-gluten-free')
     } else {
-      oneCrust.style.visibility = 'hidden';
+      crust.classList.remove('crust-gluten-free')
     }
-  });
 }
 
 function renderButtons() {
@@ -122,18 +120,19 @@ function renderButtons() {
 }
 
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
-  let totalPrice = basePrice
-  let list = document.querySelector('aside.panel.price ul')
-  list.innerHTML = ""
+//   // Iteration 4: change the HTML of `<aside class="panel price">`
+  // let totalPrice = basePrice
+  // let list = document.querySelector('aside.panel.price ul')
+  // list.innerHTML = ""
 
-  for (let ingredientKey in ingredients) {
-    if (state[ingredientKey]) {
-      totalPrice += ingredients[ingredientKey].price
-      list.innerHTML += `<li>$${ingredients[ingredientKey].price} ${ingredients[ingredientKey].name.toLowerCase()}</li>`
-    }
-  }
-  document.querySelector('aside.panel.price strong').innerHTML = "$" + totalPrice
+  // document.querySelector('aside.panel.price ul').forEach((ingredient) => { 
+  //   if (state.ingredient) {
+  //     totalPrice += ingredient.price
+  //     list.innerHTML += `<li>$${ingredient.price} ${ingredient.name.toLowerCase()}</li>`
+  //   }
+
+  //   document.querySelector('aside.panel.price strong').innerHTML = "$" + totalPrice
+  // });
 }
 
 renderEverything();
